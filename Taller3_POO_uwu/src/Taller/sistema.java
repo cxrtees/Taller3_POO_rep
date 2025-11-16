@@ -1,5 +1,5 @@
 package Taller;
 
-public class sistema {
+public interface Sistema {
 
 }

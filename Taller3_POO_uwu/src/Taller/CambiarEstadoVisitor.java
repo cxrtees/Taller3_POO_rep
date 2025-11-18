@@ -14,7 +14,7 @@ public class CambiarEstadoVisitor implements TareaVisitor {
 
 	@Override
 	public void visitDocumentacion(Documentacion doc) {
-		doc.setEstado("Completada"); // documentación se marca como "Completada"
+		doc.setEstado("Completada"); // documentación se marca como "Completada"		
 	}
 
 }

@@ -12,7 +12,7 @@ public class Proyecto {
 	public Proyecto(String iD, String nombre, Usuario responsable) {
 		super();
 		this.ID = iD;
-		this.Nombre = nombre;
+		this.Nombre = nombre; 
 		this.Responsable = responsable;
 		this.Tareas = new ArrayList<>();
 	}

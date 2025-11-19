@@ -2,6 +2,7 @@ package Taller;
 
 public class Bug extends Tarea {
 	// Aceptar visitor 
+<<<<<<< Updated upstream
 
 	public Bug(Taller.Proyecto proyecto, String iD, Tarea tipo, String descripcion, String estado, Usuario responsable,
 			String complejidad, String fecha) {
@@ -12,5 +13,7 @@ public class Bug extends Tarea {
 	public void accept(TareaVisitor v) {
 		v.visitBug(this);
 	}
+=======
+>>>>>>> Stashed changes
 
 }

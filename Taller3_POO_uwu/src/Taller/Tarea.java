@@ -8,6 +8,7 @@ public abstract class Tarea {
 	private Usuario Responsable;
 	private String Complejidad;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 	private String fecha;
 
 	public Tarea(Taller.Proyecto proyecto, String iD, Tarea tipo, String descripcion, String estado,
@@ -57,6 +58,8 @@ public abstract class Tarea {
 	}
 
 =======
+=======
+>>>>>>> Stashed changes
 	private String Fecha;
 	
 	
@@ -80,14 +83,23 @@ public abstract class Tarea {
 	public String getComplejidad() {
 		return Complejidad;
 	}
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 	public String getFecha() {
 		return fecha;
 	}
 	
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 	
 	
+=======
+	//no añadir tipo porque lo ara el Strategy
+	
+	//constructor y aceptar del visitor 
+>>>>>>> Stashed changes
 =======
 	//no añadir tipo porque lo ara el Strategy
 	

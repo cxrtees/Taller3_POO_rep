@@ -3,9 +3,9 @@ package Taller;
 public abstract class Usuario {
 	private String Username;
 	private String Contraseña;
-	private Usuario Rol;
+	private String Rol;
 	
-	public Usuario(String username, String contraseña, Usuario rol) {
+	public Usuario(String username, String contraseña, String rol) {
 		super();
 		Username = username;
 		Contraseña = contraseña;
@@ -20,7 +20,7 @@ public abstract class Usuario {
 		return Contraseña;
 	}
 
-	public Usuario getRol() {
+	public String getRol() {
 		return Rol;
 	}
 	

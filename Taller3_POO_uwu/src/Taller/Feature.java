@@ -1,23 +1,14 @@
 package Taller;
 
 public class Feature extends Tarea {
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-
-	public Feature(Taller.Proyecto proyecto, String iD, Tarea tipo, String descripcion, String estado,
+	public Feature(Proyecto proyecto, String iD, String descripcion, String estado,
 			Usuario responsable, String complejidad, String fecha) {
-		super(proyecto, iD, tipo, descripcion, estado, responsable, complejidad, fecha);
+		super(proyecto, iD, descripcion, estado, responsable, complejidad, fecha);
 	}
 
 	@Override
 	public void accept(TareaVisitor v) {
 		v.visitFeature(this);
 	}
-
-=======
-	//aceptar visitor
->>>>>>> Stashed changes
-=======
-	//aceptar visitor
->>>>>>> Stashed changes
 }
+//no se añadi el parametro tipo porque ya lo representa la clase

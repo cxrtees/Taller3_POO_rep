@@ -4,7 +4,7 @@ public class CambiarEstadoVisitor implements TareaVisitor {
 
 	@Override
 	public void visitBug(Bug bug) {
-		bug.setEstado("En progeso"); //bugs pasan a "En progreso"
+		bug.setEstado("En progreso"); //bugs pasan a "En progreso"
 	}
 
 	@Override

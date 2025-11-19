@@ -43,6 +43,10 @@ public abstract class Tarea {
 	public String getFecha() {
 		return fecha;
 	}
+
+	public void setEstado(String estado) {
+		Estado = estado;
+	}
 	
 
 }

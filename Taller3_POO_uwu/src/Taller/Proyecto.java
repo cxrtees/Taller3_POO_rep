@@ -14,7 +14,7 @@ public class Proyecto {
 		this.ID = iD;
 		this.Nombre = nombre;
 		this.Responsable = responsable;
-		this.Tareas = Tareas;
+		this.Tareas = new ArrayList<>();
 	}
 
 	public String getID() {

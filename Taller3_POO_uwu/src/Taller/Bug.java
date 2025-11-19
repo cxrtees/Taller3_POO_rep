@@ -1,6 +1,7 @@
 package Taller;
 
 public class Bug extends Tarea {
+	// Aceptar visitor 
 
 	public Bug(Taller.Proyecto proyecto, String iD, Tarea tipo, String descripcion, String estado, Usuario responsable,
 			String complejidad, String fecha) {

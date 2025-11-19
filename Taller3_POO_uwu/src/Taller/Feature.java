@@ -1,6 +1,7 @@
 package Taller;
 
 public class Feature extends Tarea {
+<<<<<<< Updated upstream
 
 	public Feature(Taller.Proyecto proyecto, String iD, Tarea tipo, String descripcion, String estado,
 			Usuario responsable, String complejidad, String fecha) {
@@ -12,4 +13,7 @@ public class Feature extends Tarea {
 		v.visitFeature(this);
 	}
 
+=======
+	//aceptar visitor
+>>>>>>> Stashed changes
 }

@@ -16,5 +16,5 @@ public class Colaborador extends Usuario {
 	public void mostrarMenu(Sistema sistema) {
 		sistema.MenuColaborador(this); // sistema crea los metodos aca solo se llaman
 		
-	}
+	}A
 }

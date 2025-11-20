@@ -6,7 +6,14 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class SistemaImplement implements sistema {
-
+	
+	private static SistemaImplement INSTANCE = new SistemaImplement();
+	private SistemaImplement() {}
+	
+	public static SistemaImplement getInstance() {
+		return INSTANCE;
+	}
+	
 	private ArrayList<Usuario> usuarios = new ArrayList<>();
 	private ArrayList<Proyecto> proyectos = new ArrayList<>();
 	private EstrategiaPrioridad estrategia = new PrioridadPorFecha();

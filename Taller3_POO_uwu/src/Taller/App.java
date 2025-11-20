@@ -7,9 +7,9 @@ public class App {
 
     public static void main(String[] args) {
 
-        // 1. Crear sistema (si hiciste Singleton, cambia a getInstance())
-        sistema sistema = new SistemaImplement();
-
+        
+        sistema sistema = SistemaImplement.getInstance();
+        
         // 2. Cargar archivos
         try {
             sistema.cargarUsuarios();

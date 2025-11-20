@@ -39,4 +39,4 @@ public interface sistema {
     void cambiarEstadoManual(Colaborador c, Scanner s);
 }
 
-}
+

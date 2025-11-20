@@ -167,9 +167,9 @@ public class SistemaImplement implements sistema {
 	}
 	
 	private void agregarProyecto(Scanner s){
-		System.out.println("ID: "); String id = s.nextLine();
-		System.out.println("Nombre: "); String nom = s.nextLine();
-		System.out.println("Responsable (username): "); String u = s.nextLine();
+		System.out.print("ID: "); String id = s.nextLine();
+		System.out.print("Nombre: "); String nom = s.nextLine();
+		System.out.print("Responsable (username): "); String u = s.nextLine();
 		Usuario resp = buscarUsuario(u);
 		Proyecto p = new Proyecto(id, nom, resp);
 		proyectos.add(p);
@@ -182,7 +182,39 @@ public class SistemaImplement implements sistema {
 		System.out.println("Proyecto eliminado.");}
 	}
 	
+	private void agregarTarea(Scanner s) {
+		System.out.println("ID proyecto: "); Proyecto p = buscarProyecto(s.nextLine());
+		if (p == null) { System.out.println("Proyecto no existe."); return;	}
+		System.out.print("Tipo (bug/feature/documentacion): "); String tipo = s.nextLine();
+		System.out.print("ID tarea: "); String id = s.nextLine();
+		System.out.print("Descripción: "); String desc = s.nextLine();
+		System.out.print("Estado inicial:" ); String est = s.nextLine();
+		System.out.print("Responsable (username): "); Usuario resp = buscarUsuario(s.nextLine());
+		System.out.print("Complejidad (Baja/Media/Alta): "); String comp = s.nextLine();
+		System.out.print("Fecha (DD-MM-YYYY): "); String fecha = s.nextLine();
+		
+		for (Tarea t: p.getTareas()) {
+			if (t.getResponsable() == resp && fecha.equals(t.getFecha())) {
+				System.out.println("Conflicto: responsable ya tiene tarea ese día.");
+				return;
+			}
+		}
+		Tarea t = switch (tipo.toLowerCase()) {
+		case "bug" -> new Bug(p, id, desc, est, resp, comp, fecha);
+		case "feature" -> new Feature(p, id, desc, est, resp, comp, fecha);
+		case "documentacion" -> new Documentacion(p, id, desc, est, resp, comp, fecha);
+		default -> null;
+		};
+		if (t != null) {p.añadirTarea(t); System.out.println("Tarea agregada");}
+	}
 	
+	private void eliminarTarea(Scanner s) {
+		System.out.print("ID de proyecto: "); Proyecto p = buscarProyecto(s.nextLine());
+		if (p == null) {System.out.println( "El proyecto no existe"); return;}
+		System.out.print("ID tarea: "); String id = s.nextLine();
+		p.getTareas().removeIf(t-> t.getID().equals(id));
+		System.out.println("Tarea eliminada");
+	}
 	
 	
 	private int leerEntero(Scanner s) {

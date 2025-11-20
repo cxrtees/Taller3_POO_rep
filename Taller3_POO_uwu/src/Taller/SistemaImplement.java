@@ -62,16 +62,13 @@ public class SistemaImplement implements sistema {
 			if (pr == null || resp == null)
 				continue;
 
-			Tarea t = switch (tipo.toLowerCase()) {
-			case "bug" -> new Bug(pr, id, desc, estado, resp, compl, fecha);
-			case "feature" -> new Feature(pr, id, desc, estado, resp, compl, fecha);
-			case "documentacion" -> new Documentacion(pr, id, desc, estado, resp, compl, fecha);
-			default -> null;
+			Tarea t = TareaFactory.crearTarea(tipo, pr, id, desc, estado, resp, compl, fecha);
+
 			};
 
 			s.close();
 }
-	}
+	
 	//Busquedas
 	public Proyecto buscarProyecto(String id) {
 		for (Proyecto pr : proyectos )
@@ -199,12 +196,8 @@ public class SistemaImplement implements sistema {
 				return;
 			}
 		}
-		Tarea t = switch (tipo.toLowerCase()) {
-		case "bug" -> new Bug(p, id, desc, est, resp, comp, fecha);
-		case "feature" -> new Feature(p, id, desc, est, resp, comp, fecha);
-		case "documentacion" -> new Documentacion(p, id, desc, est, resp, comp, fecha);
-		default -> null;
-		};
+	Tarea t = TareaFactory.crearTarea(tipo, p, id, desc,est, resp, comp, fecha);
+
 		if (t != null) {p.añadirTarea(t); System.out.println("Tarea agregada");}
 	}
 	

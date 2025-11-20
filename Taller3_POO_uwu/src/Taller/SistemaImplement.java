@@ -215,14 +215,64 @@ public class SistemaImplement implements sistema {
 		p.getTareas().removeIf(t-> t.getID().equals(id));
 		System.out.println("Tarea eliminada");
 	}
-	 
-	
-	
-	
-	
 	
 	private int leerEntero(Scanner s) {
 		try {return Integer.parseInt(s.nextLine().trim());}
 		catch (Exception e) {return -1;}
 	}
+	 private void elegirEstrategia(Scanner s){
+	        System.out.println("Estrategias: 1) Fecha  2) Tipo  3) Complejidad");
+	        System.out.print("Elige: ");
+	        int e = leerEntero(s);
+	        estrategia = switch (e) {
+	            case 2 -> new PrioridadPorTipo();
+	            case 3 -> new PrioridadPorComplejidad();
+	            default -> new PrioridadPorFecha();
+	        };
+	        System.out.println("Estrategia aplicada.");
+	    }
+
+	    private void generarReporte() {
+	        try (java.io.PrintWriter out = new java.io.PrintWriter("reporte.txt")) {
+	            for (Proyecto p : proyectos) {
+	                out.println("Proyecto " + p.getID() + " - " + p.getNombre());
+	                ArrayList<Tarea> ts = p.getTareas();
+	                estrategia.ordenar(ts);
+	                for (Tarea t : ts) {
+	                    out.println(t.getID()+"|"+t.getFecha()+"|"+t.getClass().getSimpleName()
+	                            +"|"+t.getDescripcion()+"|"+t.getEstado()+"|"
+	                            +t.getResponsable().getUsername()+"|"+t.getComplejidad());
+	                }
+	                out.println();
+	            }
+	        } catch (java.io.FileNotFoundException e) {
+	            throw new RuntimeException(e); // si prefieres, propágalo
+	        }
+	        System.out.println("reporte.txt generado.");
+	    }
+
+	    private void listarProyectosBasico(){
+	        for (Proyecto p : proyectos) {
+	            String resp = (p.getResponsable()!=null ? p.getResponsable().getUsername() : "-");
+	            System.out.println(p.getID()+" - "+p.getNombre()+" (Resp: "+resp+")");
+	        }
+	    }
+
+	    private void verMisTareasOrdenadas(Colaborador c){
+	        ArrayList<Tarea> mias = tareasDe(c);
+	        estrategia.ordenar(mias);
+	        for (Tarea t : mias)
+	            System.out.println(" - "+t.getID()+" ["+t.getFecha()+"] "
+	                    +t.getDescripcion()+" ("+t.getEstado()+")");
+	    }
+
+	    private void cambiarEstadoManual(Colaborador c, Scanner s){
+	        ArrayList<Tarea> mias = tareasDe(c);
+	        for (Tarea t : mias)
+	            System.out.println(t.getID()+" - "+t.getDescripcion()+" ("+t.getEstado()+")");
+	        System.out.print("ID de tarea: "); String id = s.nextLine();
+	        System.out.print("Nuevo estado (Pendiente/En progreso/Completada): "); String ne = s.nextLine();
+	        for (Tarea t : mias) if (t.getID().equals(id)) { t.setEstado(ne); System.out.println("OK."); return; }
+	        System.out.println("No encontrada.");
+	    }
 }

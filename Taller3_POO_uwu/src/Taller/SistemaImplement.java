@@ -26,7 +26,7 @@ public class SistemaImplement implements sistema {
 		// System.out.println("Usuarios cargados: "+ usuarios.size());
 	}
 
-	private void cargarProyectos() throws FileNotFoundException {
+	public void cargarProyectos() throws FileNotFoundException {
 		Scanner s = new Scanner(new File("proyectos.txt"));
 		while (s.hasNextLine()) {
 			String[] p = s.nextLine().trim().split("\\|");
@@ -73,21 +73,21 @@ public class SistemaImplement implements sistema {
 }
 	}
 	//Busquedas
-	private Proyecto buscarProyecto(String id) {
+	public Proyecto buscarProyecto(String id) {
 		for (Proyecto pr : proyectos )
 			if (pr.getID().equals(id))
 				return pr;
 		return null;
 	}
 
-	private Usuario buscarUsuario(String username) {
+	public Usuario buscarUsuario(String username) {
 		for (Usuario u : usuarios)
 			if (u.getUsername().equals(username))
 				return u;
 		return null;
 	}
 	
-	private ArrayList<Tarea> tareasDe(Colaborador c) {
+	public ArrayList<Tarea> tareasDe(Colaborador c) {
 		ArrayList<Tarea> r = new ArrayList<>();
 		for (Proyecto p: proyectos)
 			for (Tarea t: p.getTareas())
@@ -120,7 +120,7 @@ public class SistemaImplement implements sistema {
 			case 3 -> eliminarProyecto(s);
 			case 4 -> agregarTarea(s);
 			case 5 -> eliminarTarea(s);
-			case 6 -> elegirEsttrategia(s);
+			case 6 -> elegirEstrategia(s);
 			case 7 -> generarReporte();
   			}
 		}while (opcion != 0);
@@ -155,7 +155,7 @@ public class SistemaImplement implements sistema {
 		}while (opcion != 0);
 	}
 	
-	private void listarProyectosYTareasOrdenadas() {
+	public void listarProyectosYTareasOrdenadas() {
 		for (Proyecto p: proyectos) {
 			ArrayList<Tarea> ts = p.getTareas();
 			estrategia.ordenar(ts);
@@ -166,7 +166,7 @@ public class SistemaImplement implements sistema {
 		}
 	}
 	
-	private void agregarProyecto(Scanner s){
+	public void agregarProyecto(Scanner s){
 		System.out.print("ID: "); String id = s.nextLine();
 		System.out.print("Nombre: "); String nom = s.nextLine();
 		System.out.print("Responsable (username): "); String u = s.nextLine();
@@ -176,13 +176,13 @@ public class SistemaImplement implements sistema {
 		System.out.println("Proyecto agregado.");		
 	}
 	
-	private void eliminarProyecto(Scanner s) {
+	public void eliminarProyecto(Scanner s) {
 		System.out.println("ID de proyecto: "); Proyecto p = buscarProyecto(s.nextLine());
 		if (p != null) {proyectos.remove(p); 
 		System.out.println("Proyecto eliminado.");}
 	}
 	
-	private void agregarTarea(Scanner s) {
+	public void agregarTarea(Scanner s) {
 		System.out.println("ID proyecto: "); Proyecto p = buscarProyecto(s.nextLine());
 		if (p == null) { System.out.println("Proyecto no existe."); return;	}
 		System.out.print("Tipo (bug/feature/documentacion): "); String tipo = s.nextLine();
@@ -208,7 +208,7 @@ public class SistemaImplement implements sistema {
 		if (t != null) {p.añadirTarea(t); System.out.println("Tarea agregada");}
 	}
 	
-	private void eliminarTarea(Scanner s) {
+	public void eliminarTarea(Scanner s) {
 		System.out.print("ID de proyecto: "); Proyecto p = buscarProyecto(s.nextLine());
 		if (p == null) {System.out.println( "El proyecto no existe"); return;}
 		System.out.print("ID tarea: "); String id = s.nextLine();
@@ -216,11 +216,11 @@ public class SistemaImplement implements sistema {
 		System.out.println("Tarea eliminada");
 	}
 	
-	private int leerEntero(Scanner s) {
+	public int leerEntero(Scanner s) {
 		try {return Integer.parseInt(s.nextLine().trim());}
 		catch (Exception e) {return -1;}
 	}
-	 private void elegirEstrategia(Scanner s){
+	 public void elegirEstrategia(Scanner s){
 	        System.out.println("Estrategias: 1) Fecha  2) Tipo  3) Complejidad");
 	        System.out.print("Elige: ");
 	        int e = leerEntero(s);
@@ -232,7 +232,7 @@ public class SistemaImplement implements sistema {
 	        System.out.println("Estrategia aplicada.");
 	    }
 
-	    private void generarReporte() {
+	    public void generarReporte() {
 	        try (java.io.PrintWriter out = new java.io.PrintWriter("reporte.txt")) {
 	            for (Proyecto p : proyectos) {
 	                out.println("Proyecto " + p.getID() + " - " + p.getNombre());
@@ -251,14 +251,14 @@ public class SistemaImplement implements sistema {
 	        System.out.println("reporte.txt generado.");
 	    }
 
-	    private void listarProyectosBasico(){
+	    public void listarProyectosBasico(){
 	        for (Proyecto p : proyectos) {
 	            String resp = (p.getResponsable()!=null ? p.getResponsable().getUsername() : "-");
 	            System.out.println(p.getID()+" - "+p.getNombre()+" (Resp: "+resp+")");
 	        }
 	    }
 
-	    private void verMisTareasOrdenadas(Colaborador c){
+	    public void verMisTareasOrdenadas(Colaborador c){
 	        ArrayList<Tarea> mias = tareasDe(c);
 	        estrategia.ordenar(mias);
 	        for (Tarea t : mias)
@@ -266,7 +266,7 @@ public class SistemaImplement implements sistema {
 	                    +t.getDescripcion()+" ("+t.getEstado()+")");
 	    }
 
-	    private void cambiarEstadoManual(Colaborador c, Scanner s){
+	    public void cambiarEstadoManual(Colaborador c, Scanner s){
 	        ArrayList<Tarea> mias = tareasDe(c);
 	        for (Tarea t : mias)
 	            System.out.println(t.getID()+" - "+t.getDescripcion()+" ("+t.getEstado()+")");

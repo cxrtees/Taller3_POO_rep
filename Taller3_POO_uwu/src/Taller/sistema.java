@@ -2,7 +2,7 @@ package Taller;
 
 public interface sistema {
 
-	void MenuAdministradror(Administrador administrador);
+	void MenuAdministrador(Administrador administrador);
 	void MenuColaborador(Colaborador colaborador);
 
 }

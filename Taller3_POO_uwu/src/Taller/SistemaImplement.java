@@ -98,7 +98,7 @@ public class SistemaImplement implements sistema {
 	
 	//Menus 
 	@Override
-	public void MenuAdministradror(Administrador administrador) {
+	public void MenuAdministrador(Administrador administrador) {
 		Scanner s = new Scanner(System.in);
 		int opcion;
 		do {
@@ -215,6 +215,10 @@ public class SistemaImplement implements sistema {
 		p.getTareas().removeIf(t-> t.getID().equals(id));
 		System.out.println("Tarea eliminada");
 	}
+	 
+	
+	
+	
 	
 	
 	private int leerEntero(Scanner s) {

@@ -63,7 +63,7 @@ public class SistemaImplement implements sistema {
 				continue;
 
 			Tarea t = TareaFactory.crearTarea(tipo, pr, id, desc, estado, resp, compl, fecha);
-
+			if (t != null) pr.añadirTarea(t);
 			};
 
 			s.close();
@@ -139,9 +139,9 @@ public class SistemaImplement implements sistema {
 			opcion = leerEntero(s);
 			
 			switch (opcion) {
-			case 1 -> listarProyectoBasico();
+			case 1 -> listarProyectosBasico();
 			case 2 -> verMisTareasOrdenadas(c);
-			case 3 -> CambiarEstadoManual(c, s);
+			case 3 -> cambiarEstadoManual(c, s);
 			case 4 -> {
 				System.out.println("Aplicando CambiarEstadoVisitor...");
 				c.aplicarVisitor(tareasDe(c), new CambiarEstadoVisitor());
@@ -188,7 +188,7 @@ public class SistemaImplement implements sistema {
 		System.out.print("Estado inicial:" ); String est = s.nextLine();
 		System.out.print("Responsable (username): "); Usuario resp = buscarUsuario(s.nextLine());
 		System.out.print("Complejidad (Baja/Media/Alta): "); String comp = s.nextLine();
-		System.out.print("Fecha (DD-MM-YYYY): "); String fecha = s.nextLine();
+		System.out.print("Fecha (YYYY-MM-DD): "); String fecha = s.nextLine();
 		
 		for (Tarea t: p.getTareas()) {
 			if (t.getResponsable() == resp && fecha.equals(t.getFecha())) {

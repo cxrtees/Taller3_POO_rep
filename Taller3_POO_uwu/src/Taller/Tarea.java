@@ -47,6 +47,6 @@ public abstract class Tarea {
 	public void setEstado(String estado) {
 		Estado = estado;
 	}
-	//asdasdadsa
+
 
 }

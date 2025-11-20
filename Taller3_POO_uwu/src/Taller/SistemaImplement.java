@@ -86,6 +86,16 @@ public class SistemaImplement implements sistema {
 				return u;
 		return null;
 	}
+	
+	private ArrayList<Tarea> tareasDe(Colaborador c) {
+		ArrayList<Tarea> r = new ArrayList<>();
+		for (Proyecto p: proyectos)
+			for (Tarea t: p.getTareas())
+				if (t.getResponsable()== c) r.add(t);
+		return r;
+	}
+	
+	
 	//Menus 
 	@Override
 	public void MenuAdministradror(Administrador administrador) {

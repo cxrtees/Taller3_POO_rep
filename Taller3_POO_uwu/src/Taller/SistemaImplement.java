@@ -125,7 +125,6 @@ public class SistemaImplement implements sistema {
   			}
 		}while (opcion != 0);
 	}
-
 	
 
 	@Override
@@ -155,6 +154,35 @@ public class SistemaImplement implements sistema {
   			}
 		}while (opcion != 0);
 	}
+	
+	private void listarProyectosYTareasOrdenadas() {
+		for (Proyecto p: proyectos) {
+			ArrayList<Tarea> ts = p.getTareas();
+			estrategia.ordenar(ts);
+			System.out.println(p.getID() + " - "+ p.getNombre()+ " (tareas: "+ ts.size()+ ")");
+			for (Tarea t: ts) 
+				System.out.println("  * "+ t.getID()+ "["+ t.getFecha()+"] "+t.getClass().getSimpleName()+ " | "+t.getDescripcion()+ " | "
+						+t.getEstado()+ " | "+ t.getResponsable().getUsername()+ " | "+ t.getComplejidad());
+		}
+	}
+	
+	private void agregarProyecto(Scanner s){
+		System.out.println("ID: "); String id = s.nextLine();
+		System.out.println("Nombre: "); String nom = s.nextLine();
+		System.out.println("Responsable (username): "); String u = s.nextLine();
+		Usuario resp = buscarUsuario(u);
+		Proyecto p = new Proyecto(id, nom, resp);
+		proyectos.add(p);
+		System.out.println("Proyecto agregado.");		
+	}
+	
+	private void eliminarProyecto(Scanner s) {
+		System.out.println("ID de proyecto: "); Proyecto p = buscarProyecto(s.nextLine());
+		if (p != null) {proyectos.remove(p); 
+		System.out.println("Proyecto eliminado.");}
+	}
+	
+	
 	
 	
 	private int leerEntero(Scanner s) {

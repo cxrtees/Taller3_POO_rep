@@ -12,9 +12,7 @@ public class Colaborador extends Usuario {
 			t.accept(visitor);
 		}
 	}
-	@Override
-	public void mostrarMenu(Sistema sistema) {
-		sistema.MenuColaborador(this); // sistema crea los metodos aca solo se llaman
-		
-	}A
+	public void mostrarMenu(sistema sistema) {
+		sistema.MenuColaborador(this);
+	}
 }

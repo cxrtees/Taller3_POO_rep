@@ -28,7 +28,7 @@ public abstract class Usuario {
 	        return this.Contraseña.equals(pass);
 	    }
 
-public abstract void mostrarMenu(Sistema sistema); // clase abstracta para que cada uno implemente su menu
+public abstract void mostrarMenu(sistema sistema); // clase abstracta para que cada uno implemente su menu
 	
 
 }

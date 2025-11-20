@@ -86,17 +86,69 @@ public class SistemaImplement implements sistema {
 				return u;
 		return null;
 	}
-
+	//Menus 
 	@Override
 	public void MenuAdministradror(Administrador administrador) {
-		// TODO Auto-generated method stub
-
+		Scanner s = new Scanner(System.in);
+		int opcion;
+		do {
+			System.out.println("\n--- MENÚ ADMIN ---");
+			System.out.println("1) Ver proyectos y tareas");
+			System.out.println("2) Agregar proyecto");
+			System.out.println("3) Eliminar proyecto");
+			System.out.println("4) Agregar tarea");
+			System.out.println("5) Eliminar tarea");
+			System.out.println("6) Asignar prioridad");
+			System.out.println("7) Generar reporte.txt");
+			System.out.println("0) Salir");
+			System.out.print("Opcion: ");
+			opcion = leerEntero(s);
+			
+			switch (opcion) {
+			case 1 -> listarProyectosYTareasOrdenadas();
+			case 2 -> agregarProyecto(s);
+			case 3 -> eliminarProyecto(s);
+			case 4 -> agregarTarea(s);
+			case 5 -> eliminarTarea(s);
+			case 6 -> elegirEsttrategia(s);
+			case 7 -> generarReporte();
+  			}
+		}while (opcion != 0);
 	}
+
+	
 
 	@Override
-	public void MenuColaborador(Colaborador colaborador) {
-		// TODO Auto-generated method stub
-
+	public void MenuColaborador(Colaborador c) {
+		Scanner s = new Scanner(System.in);
+		int opcion;
+		do {
+			System.out.println("\n--- MENÚ COLABORADOR ---");
+			System.out.println("1) Ver proyectos disponibles");
+			System.out.println("2) Ver mis tareas");
+			System.out.println("3) Cambiar estado de una tarea mía");
+			System.out.println("4) Aplicar Visitor sobre mis tareas");	
+			System.out.println("0) Salir");
+			System.out.print("Opcion: ");
+			opcion = leerEntero(s);
+			
+			switch (opcion) {
+			case 1 -> listarProyectoBasico();
+			case 2 -> verMisTareasOrdenadas(c);
+			case 3 -> CambiarEstadoManual(c, s);
+			case 4 -> {
+				System.out.println("Aplicando CambiarEstadoVisitor...");
+				c.aplicarVisitor(tareasDe(c), new CambiarEstadoVisitor());
+				System.out.println("Listo.");
+			}
+			
+  			}
+		}while (opcion != 0);
 	}
-
+	
+	
+	private int leerEntero(Scanner s) {
+		try {return Integer.parseInt(s.nextLine().trim());}
+		catch (Exception e) {return -1;}
+	}
 }

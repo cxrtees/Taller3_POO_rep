@@ -1,0 +1,15 @@
+Proyecto PR001 - Plataforma de E-commerce
+T001|2025-08-01|Bug|Error en el login de usuarios|Pendiente|colab1|Alta
+T002|2025-08-01|Feature|Agregar carrito de compras|Pendiente|colab2|Media
+T003|2025-08-02|Documentacion|Redactar manual de usuario|En progreso|colab1|Baja
+
+Proyecto PR002 - Sistema de Inventario
+T004|2025-08-02|Feature|Implementar módulo de reportes|Pendiente|colab2|Alta
+T005|2025-08-03|Bug|Fallo en exportación de datos|Pendiente|colab1|Alta
+
+Proyecto PR003 - Aplicación Móvil de Reservas
+T007|2025-08-03|Documentacion|Escribir casos de uso|Pendiente|colab2|Baja
+T006|2025-08-04|Feature|Diseñar pantalla de reservas|Pendiente|colab1|Media
+
+Proyecto 12 - ola
+

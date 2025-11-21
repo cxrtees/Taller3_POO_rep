@@ -1,6 +1,6 @@
-Catalina rojas @Lncata
+Catalina Rojas @Lncata
 
-Benjamin Cortes @
+Benjamin Cortes @cxrtees
 
 Descripción del Proyecto
 

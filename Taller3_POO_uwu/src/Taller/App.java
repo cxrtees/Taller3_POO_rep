@@ -1,4 +1,6 @@
 package Taller;
+//Catalina rojas 21953080-3 
+//Benjamin Cortes 21890703-2
 
 import java.io.FileNotFoundException;
 import java.util.Scanner;

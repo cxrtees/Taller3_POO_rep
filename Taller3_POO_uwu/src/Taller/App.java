@@ -1,6 +1,6 @@
 package Taller;
-//Catalina rojas 21953080-3 
-//Benjamin Cortes 21890703-2
+//Catalina Isidora Rojas Macaya 21953080-3 ICCI
+//Benjamín Ismael Cortés Acuña 21890703-2 ICCI
 
 import java.io.FileNotFoundException;
 import java.util.Scanner;

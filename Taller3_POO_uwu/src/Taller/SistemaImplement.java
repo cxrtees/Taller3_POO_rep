@@ -20,6 +20,7 @@ public class SistemaImplement implements sistema {
 	
 	/**
 	 * carga usuarios.txt y si son admin los crea y con colaborador lo mismo, y los agrega al array de usuarios.
+	 * @return vacio
 	 */
 	public void cargarUsuarios() throws FileNotFoundException {
 		Scanner s = new Scanner(new File("usuarios.txt"));
@@ -38,6 +39,7 @@ public class SistemaImplement implements sistema {
 	
 	/**
 	 * carga proyectos.txt y tambien busca al user responsable para crear el proyecto y guardalo en el array de proyectos
+	 * @return vacio
 	 */
 	public void cargarProyectos() throws FileNotFoundException {
 		Scanner s = new Scanner(new File("proyectos.txt"));
@@ -56,6 +58,7 @@ public class SistemaImplement implements sistema {
 
 	/**
 	 * carga tareas.txt y busca el proyecto con su id y el user responsable y ahi crea tarea.
+	 * @return vacio
 	 */
 	public void cargarTareas() throws FileNotFoundException {
 		Scanner s = new Scanner(new File("tareas.txt"));
@@ -88,7 +91,8 @@ public class SistemaImplement implements sistema {
 	//Busquedas
 	
 	/**
-	 * busca el proyecto con su id en proyectos y retorna este.
+	 * busca el proyecto con su id en proyectos y
+	 *  @return Proyecto.
 	 */
 	public Proyecto buscarProyecto(String id) {
 		for (Proyecto pr : proyectos )
@@ -99,6 +103,7 @@ public class SistemaImplement implements sistema {
 
 	/**
 	 * busca el usuario con su user y retorna este.
+	 * @return Usuario
 	 */
 	public Usuario buscarUsuario(String username) {
 		for (Usuario u : usuarios)
@@ -108,7 +113,8 @@ public class SistemaImplement implements sistema {
 	}
 	
 	/**
-	 * crea un array de tarea y busca tareas en proyectos y busca el responsable y lo guarda en el array y retorna este.
+	 * crea un array de tarea y busca tareas en proyectos y busca el responsable y lo guarda en el array y retorna este
+	 * @return ArrayList r.
 	 */
 	public ArrayList<Tarea> tareasDe(Colaborador c) {
 		ArrayList<Tarea> r = new ArrayList<>();
@@ -122,6 +128,7 @@ public class SistemaImplement implements sistema {
 	//Menus 
 	/**
 	 * menú de admin con sus opciones con cada case.
+	 * @return vacio
 	 */
 	@Override
 	public void MenuAdministrador(Administrador administrador) {
@@ -154,6 +161,7 @@ public class SistemaImplement implements sistema {
 	
 	/**
 	 * menú de colab con sus opciones con cases.
+	 * @return vacio
 	 */
 	@Override
 	public void MenuColaborador(Colaborador c) {
@@ -185,6 +193,7 @@ public class SistemaImplement implements sistema {
 	
 	/**
 	 * ordena tareas y imprime los proyectos y tareas en orden.
+	 * @return vacio
 	 */
 	public void listarProyectosYTareasOrdenadas() {
 		for (Proyecto p: proyectos) {
@@ -199,6 +208,7 @@ public class SistemaImplement implements sistema {
 	
 	/**
 	 * con scanner pide datos para crear el proyecto y lo guarda en proyectos.
+	 * @return vacio
 	 */
 	public void agregarProyecto(Scanner s){
 		System.out.print("ID: "); String id = s.nextLine();
@@ -212,6 +222,7 @@ public class SistemaImplement implements sistema {
 	
 	/**
 	 *  elimina proyectos con su id y lo borra de proyectos.
+	 *  @return vacio
 	 */
 	public void eliminarProyecto(Scanner s) {
 		System.out.println("ID de proyecto: "); Proyecto p = buscarProyecto(s.nextLine());
@@ -221,6 +232,7 @@ public class SistemaImplement implements sistema {
 	
 	/**
 	 * agrega tarea con en proyecto con su id y pide cada dato para crear tarea.
+	 * @return vacio
 	 */
 	public void agregarTarea(Scanner s) {
 		System.out.println("ID proyecto: "); Proyecto p = buscarProyecto(s.nextLine());
@@ -246,6 +258,7 @@ public class SistemaImplement implements sistema {
 	
 	/**
 	 * elimina tarea con id de proyecto, id de tarea.
+	 * @return vacio
 	 */
 	public void eliminarTarea(Scanner s) {
 		System.out.print("ID de proyecto: "); Proyecto p = buscarProyecto(s.nextLine());
@@ -257,6 +270,7 @@ public class SistemaImplement implements sistema {
 	
 	/**
 	 * con scanner transforma el String a un int y retorna este.
+	 * @return entero 
 	 */
 	public int leerEntero(Scanner s) {
 		try {return Integer.parseInt(s.nextLine().trim());}
@@ -265,6 +279,7 @@ public class SistemaImplement implements sistema {
 	
 	/**
 	 * funcion de elegir estrategia a traves de cases, y llama al que se escoja.
+	 * @return vacio
 	 */
 	 public void elegirEstrategia(Scanner s){
 	        System.out.println("Estrategias: 1) Fecha  2) Tipo  3) Complejidad");
@@ -281,6 +296,7 @@ public class SistemaImplement implements sistema {
 	 
 	 	/**
 	 	 * genera un reporte.txt.
+	 	 * @return vacio
 	 	 */
 	    public void generarReporte() {
 	        try (java.io.PrintWriter out = new java.io.PrintWriter("reporte.txt")) {
@@ -303,6 +319,7 @@ public class SistemaImplement implements sistema {
 	    
 	    /**
 	     * imprime lista de proyecto basico
+	     * @return vacio
 	     */
 	    public void listarProyectosBasico(){
 	        for (Proyecto p : proyectos) {
@@ -313,6 +330,7 @@ public class SistemaImplement implements sistema {
 	    
 	    /**
 	     * imprime mis tareas ordenadas a traves del Colaborador
+	     * @return vacio
 	     */
 	    public void verMisTareasOrdenadas(Colaborador c){
 	        ArrayList<Tarea> mias = tareasDe(c);
@@ -324,6 +342,7 @@ public class SistemaImplement implements sistema {
 	    
 	    /**
 	     * cambia a estado manual de alguna tarea.
+	     * @return vacio
 	     */
 	    public void cambiarEstadoManual(Colaborador c, Scanner s){
 	        ArrayList<Tarea> mias = tareasDe(c);

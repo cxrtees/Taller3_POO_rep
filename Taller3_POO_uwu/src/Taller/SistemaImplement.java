@@ -19,7 +19,7 @@ public class SistemaImplement implements sistema {
 	private EstrategiaPrioridad estrategia = new PrioridadPorFecha();
 	
 	/**
-	 * carga usuarios.txt y si son admin los crea y con colaborador lo mismo, y los agrega al array de usuarios.
+	 * @param carga usuarios.txt y si son admin los crea y con colaborador lo mismo, y los agrega al array de usuarios.
 	 * @return vacio
 	 */
 	public void cargarUsuarios() throws FileNotFoundException {
@@ -38,7 +38,7 @@ public class SistemaImplement implements sistema {
 	}
 	
 	/**
-	 * carga proyectos.txt y tambien busca al user responsable para crear el proyecto y guardalo en el array de proyectos
+	 * @param carga proyectos.txt y tambien busca al user responsable para crear el proyecto y guardalo en el array de proyectos
 	 * @return vacio
 	 */
 	public void cargarProyectos() throws FileNotFoundException {
@@ -57,7 +57,7 @@ public class SistemaImplement implements sistema {
 	}
 
 	/**
-	 * carga tareas.txt y busca el proyecto con su id y el user responsable y ahi crea tarea.
+	 * @param carga tareas.txt y busca el proyecto con su id y el user responsable y ahi crea tarea.
 	 * @return vacio
 	 */
 	public void cargarTareas() throws FileNotFoundException {
@@ -91,7 +91,7 @@ public class SistemaImplement implements sistema {
 	//Busquedas
 	
 	/**
-	 * busca el proyecto con su id en proyectos y
+	 * @param busca el proyecto con su id en proyectos
 	 *  @return Proyecto.
 	 */
 	public Proyecto buscarProyecto(String id) {
@@ -102,7 +102,7 @@ public class SistemaImplement implements sistema {
 	}
 
 	/**
-	 * busca el usuario con su user y retorna este.
+	 * @param busca el usuario con su userName
 	 * @return Usuario
 	 */
 	public Usuario buscarUsuario(String username) {
@@ -113,7 +113,7 @@ public class SistemaImplement implements sistema {
 	}
 	
 	/**
-	 * crea un array de tarea y busca tareas en proyectos y busca el responsable y lo guarda en el array y retorna este
+	 * @param crea un array de tarea y busca tareas en proyectos y busca el responsable y lo guarda en el array 
 	 * @return ArrayList r.
 	 */
 	public ArrayList<Tarea> tareasDe(Colaborador c) {
@@ -127,7 +127,7 @@ public class SistemaImplement implements sistema {
 	
 	//Menus 
 	/**
-	 * menú de admin con sus opciones con cada case.
+	 * @param menú de admin con sus opciones con cada case.
 	 * @return vacio
 	 */
 	@Override
@@ -160,7 +160,7 @@ public class SistemaImplement implements sistema {
 	}
 	
 	/**
-	 * menú de colab con sus opciones con cases.
+	 * @param menú de colab con sus opciones con cases.
 	 * @return vacio
 	 */
 	@Override
@@ -192,7 +192,7 @@ public class SistemaImplement implements sistema {
 	}
 	
 	/**
-	 * ordena tareas y imprime los proyectos y tareas en orden.
+	 * @param ordena tareas y imprime los proyectos y tareas en orden.
 	 * @return vacio
 	 */
 	public void listarProyectosYTareasOrdenadas() {
@@ -207,7 +207,7 @@ public class SistemaImplement implements sistema {
 	}
 	
 	/**
-	 * con scanner pide datos para crear el proyecto y lo guarda en proyectos.
+	 * @param con scanner pide datos para crear el proyecto y lo guarda en proyectos.
 	 * @return vacio
 	 */
 	public void agregarProyecto(Scanner s){
@@ -221,7 +221,7 @@ public class SistemaImplement implements sistema {
 	}
 	
 	/**
-	 *  elimina proyectos con su id y lo borra de proyectos.
+	 *  @param elimina proyectos con su id y lo borra de proyectos.
 	 *  @return vacio
 	 */
 	public void eliminarProyecto(Scanner s) {
@@ -231,7 +231,7 @@ public class SistemaImplement implements sistema {
 	}
 	
 	/**
-	 * agrega tarea con en proyecto con su id y pide cada dato para crear tarea.
+	 * @param agrega tarea con en proyecto con su id y pide cada dato para crear tarea.
 	 * @return vacio
 	 */
 	public void agregarTarea(Scanner s) {
@@ -257,7 +257,7 @@ public class SistemaImplement implements sistema {
 	}
 	
 	/**
-	 * elimina tarea con id de proyecto, id de tarea.
+	 * @param elimina tarea con id de proyecto, id de tarea.
 	 * @return vacio
 	 */
 	public void eliminarTarea(Scanner s) {
@@ -269,7 +269,7 @@ public class SistemaImplement implements sistema {
 	}
 	
 	/**
-	 * con scanner transforma el String a un int y retorna este.
+	 * @param con scanner transforma el String a un int y retorna este.
 	 * @return entero 
 	 */
 	public int leerEntero(Scanner s) {
@@ -278,7 +278,7 @@ public class SistemaImplement implements sistema {
 	}
 	
 	/**
-	 * funcion de elegir estrategia a traves de cases, y llama al que se escoja.
+	 * @param funcion de elegir estrategia a traves de cases, y llama al que se escoja.
 	 * @return vacio
 	 */
 	 public void elegirEstrategia(Scanner s){
@@ -295,7 +295,7 @@ public class SistemaImplement implements sistema {
 	 
 	 
 	 	/**
-	 	 * genera un reporte.txt.
+	 	 * @param genera un reporte.txt.
 	 	 * @return vacio
 	 	 */
 	    public void generarReporte() {
@@ -318,7 +318,7 @@ public class SistemaImplement implements sistema {
 	    }
 	    
 	    /**
-	     * imprime lista de proyecto basico
+	     * @param imprime lista de proyecto basico
 	     * @return vacio
 	     */
 	    public void listarProyectosBasico(){
@@ -329,7 +329,7 @@ public class SistemaImplement implements sistema {
 	    }
 	    
 	    /**
-	     * imprime mis tareas ordenadas a traves del Colaborador
+	     * @param imprime mis tareas ordenadas a traves del Colaborador
 	     * @return vacio
 	     */
 	    public void verMisTareasOrdenadas(Colaborador c){
@@ -341,7 +341,7 @@ public class SistemaImplement implements sistema {
 	    }
 	    
 	    /**
-	     * cambia a estado manual de alguna tarea.
+	     * @param cambia a estado manual de alguna tarea.
 	     * @return vacio
 	     */
 	    public void cambiarEstadoManual(Colaborador c, Scanner s){
